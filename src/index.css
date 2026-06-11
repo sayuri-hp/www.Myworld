@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white font-sans;
+    background: #000000;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #6b21a8;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  .purple-gradient-text {
+    @apply bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-700/30 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border border-purple-700 text-purple-400 hover:bg-purple-700/20 font-semibold rounded-lg transition-all duration-300 active:scale-95;
+  }
+
+  .skill-bar {
+    @apply h-2 rounded-full bg-gradient-to-r from-purple-800 to-purple-500 transition-all duration-1000;
+  }
+
+  .nav-link {
+    @apply text-gray-400 hover:text-purple-400 transition-colors duration-200 text-sm font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-purple-400 font-semibold;
+  }
+}
+
+@layer utilities {
+  .text-shadow-purple {
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+
+  .border-purple-glow {
+    box-shadow: 0 0 15px rgba(107, 33, 168, 0.3);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Particle background effect */
+.particles-bg {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(107, 33, 168, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(107, 33, 168, 0.04) 0%, transparent 70%);
+}
+
+/* Animated grid lines */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(107, 33, 168, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 33, 168, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Hero glow effect */
+.hero-glow {
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(107, 33, 168, 0.3), transparent);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(107, 33, 168, 0.2);
+}
+
+/* Purple shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #7c3aed, #a855f7, #c084fc, #a855f7, #7c3aed);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Typing cursor effect */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #8b5cf6;
+}
+
+/* Game styles */
+.game-cell {
+  @apply flex items-center justify-center rounded-xl text-2xl font-bold cursor-pointer transition-all duration-200;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.game-cell:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* Memory card flip */
+.memory-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.memory-card.flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.memory-card-back {
+  transform: rotateY(180deg);
+}
